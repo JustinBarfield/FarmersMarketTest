@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="FarmersMarketTest.Views.Homepage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:local="clr-namespace:FarmersMarketTest.Views"
+             xmlns:UC="clr-namespace:FarmersMarketTest.Views.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>    
+            <RowDefinition Height="50"/>    
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBox Grid.Row="0" Margin="10" Text="Farmers Market"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <xctk:IntegerUpDown Name="UpDown" Value="{Binding NumberOfStalls, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+            <Button Content="Enter" Command="{Binding EnterCommand}"/>
+            <TextBlock Text="{Binding FarmerID, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+        </StackPanel>
+
+        <ItemsControl ItemsSource="{Binding Items}" Grid.Row="2">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <UC:StandUC />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
+</UserControl>
