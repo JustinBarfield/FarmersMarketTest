@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
@@ -12,12 +13,41 @@ namespace FarmersMarketTest.ViewModels
     {
         public FarmerStallVM()
         {
-            
+            ConfirmCommand = new RelayCommand(Confirm);
+        }
+        public ICommand ConfirmCommand { get; }
+
+        private int appleAmount;
+        public int AppleAmount
+        {
+            get => Produce?.FirstOrDefault()?.AppleAmount ?? 0;
+            set
+            {
+                if (Produce != null && Produce.Any())
+                {
+                    Produce[0].AppleAmount = value;
+                    OnPropertyChanged();
+                }
+            }
         }
 
-       
+        private void Confirm()
+        {
+            int i = 0;
+            for (i = 0; i < Produce.Count; i++)
+            {
 
-        public ICommand StandCommand { get; }
+                var ProduceFromStallNum = Produce[i];
+
+                int appleAmount = ProduceFromStallNum.AppleAmount;
+                int bananaAmount = ProduceFromStallNum.BananaAmount;
+                int carrotAmount = ProduceFromStallNum.CarrotAmount;
+                int orangeAmount = ProduceFromStallNum.OrangeAmount;
+                int mangoAmount = ProduceFromStallNum.MangoAmount;
+            }
+
+            
+        }
 
         private string farmerID;
         public string FarmerID

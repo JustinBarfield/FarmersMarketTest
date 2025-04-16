@@ -44,6 +44,11 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        <Button Grid.Row="2" HorizontalAlignment="Right" Command="{Binding ConfirmCommand}">Confirm</Button>
+        <Button Grid.Row="2" HorizontalAlignment="Right" 
+            Command="{Binding ConfirmCommand}">
+            Confirm
+            
+        </Button>
+
     </Grid>
 </UserControl>

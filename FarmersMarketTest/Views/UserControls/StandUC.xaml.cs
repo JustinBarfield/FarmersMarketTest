@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FarmersMarketTest.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace FarmersMarketTest.Views.UserControls
         public StandUC()
         {
             InitializeComponent();
+            
         }
     }
 }

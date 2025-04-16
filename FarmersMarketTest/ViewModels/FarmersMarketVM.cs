@@ -14,17 +14,33 @@ namespace FarmersMarketTest.ViewModels
         public ObservableCollection<FarmerStallVM> Items { get; } = new ObservableCollection<FarmerStallVM>();
         public ICommand EnterCommand { get; }
         public ICommand BuyProduceCommand { get; }
-        
+
+
+        private string appleAmount;
+        public string AppleAmount
+        {
+            get { return appleAmount; }
+            set
+            {
+                appleAmount = value;
+                OnPropertyChanged();
+            }
+        }
+
         public List<Produce> ProduceList { get; }
+        public List<Produce> MarketList { get; }
 
         private readonly List<string> produceNames; // Declare produceNames as a class-level field
 
         public FarmersMarketVM()
         {
             EnterCommand = new RelayCommand(Enter);
+           
             //BuyProduceCommand = new RelayCommand(BuyProduce);
             produceNames = new List<string> { "Apple", "Banana", "Carrot", "Orange", "Mango" }; // Initialize produceNames here
         }
+
+      
 
         //private void BuyProduce()
         //{
@@ -73,7 +89,7 @@ new Produce
     CarrotAmount = 0,
     OrangeAmount = 0,
     MangoAmount = 0
-} // Initialize all amounts to zero
+} 
                         }
                 });
             }
