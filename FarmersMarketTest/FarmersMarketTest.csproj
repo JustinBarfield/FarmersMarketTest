@@ -87,7 +87,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModels\FarmersMarketVM.cs" />
-    <Compile Include="ViewModels\StandVM.cs" />
+    <Compile Include="ViewModels\FarmerStallVM.cs" />
     <Compile Include="Views\Homepage.xaml.cs">
       <DependentUpon>Homepage.xaml</DependentUpon>
     </Compile>

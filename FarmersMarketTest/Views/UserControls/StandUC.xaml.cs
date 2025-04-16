@@ -23,7 +23,6 @@ namespace FarmersMarketTest.Views.UserControls
         public StandUC()
         {
             InitializeComponent();
-            DataContext = new ViewModels.StandVM();
         }
     }
 }
