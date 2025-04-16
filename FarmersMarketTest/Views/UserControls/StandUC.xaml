@@ -4,8 +4,8 @@
            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"   
            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"   
            xmlns:local="clr-namespace:FarmersMarketTest.Views.UserControls" 
-           xmlns:viewmodels="clr-namespace:FarmersMarketTest.ViewModels" 
-           d:DataContext="{d:DesignInstance Type=viewmodels:FarmerStallVM}"
+           xmlns:viewmodels="clr-namespace:FarmersMarketTest.ViewModels" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             d:DataContext="{d:DesignInstance Type=viewmodels:FarmersMarketVM}"
            mc:Ignorable="d"   
            d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -19,9 +19,31 @@
         <ItemsControl ItemsSource="{Binding Produce}" Grid.Row="2">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding}" />
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <!-- Display Produce Name -->
+                        <TextBlock Text="Apple" VerticalAlignment="Center" Margin="0,0,10,0" />
+                        <xctk:IntegerUpDown Name="AppleUpDown" Value="{Binding AppleAmount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        
+                        <TextBlock Text="Banana" VerticalAlignment="Center" Margin="0,0,10,0" />
+                        <xctk:IntegerUpDown Name="BananaUpDown" Value="{Binding BananaAmount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        
+                        <TextBlock Text="Carrot" VerticalAlignment="Center" Margin="0,0,10,0" />
+                        <xctk:IntegerUpDown Name="CarrotUpDown" Value="{Binding CarrotAmount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        
+                        <TextBlock Text="Orange" VerticalAlignment="Center" Margin="0,0,10,0" />
+                        <xctk:IntegerUpDown Name="OrangeUpDown" Value="{Binding OrangeAmount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        
+                        <TextBlock Text="Mango" VerticalAlignment="Center" Margin="0,0,10,0" />
+                        <xctk:IntegerUpDown Name="MangoUpDown" Value="{Binding MangoAmount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                       
+                        
+
+                        
+                    </StackPanel>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
+        <Button Grid.Row="2" HorizontalAlignment="Right" Command="{Binding ConfirmCommand}">Confirm</Button>
     </Grid>
 </UserControl>
