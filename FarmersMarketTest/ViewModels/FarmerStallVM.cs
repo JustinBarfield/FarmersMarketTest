@@ -13,8 +13,9 @@ namespace FarmersMarketTest.ViewModels
     {
         public FarmerStallVM()
         {
-            ConfirmCommand = new RelayCommand(Confirm);
+            ConfirmCommand = new RelayCommand(() => Confirm(SharedFarmersMarketVM));
         }
+
         public ICommand ConfirmCommand { get; }
 
         private int appleAmount;
@@ -31,22 +32,26 @@ namespace FarmersMarketTest.ViewModels
             }
         }
 
-        private void Confirm()
+        private void Confirm(FarmersMarketVM sharedFarmersMarketVM)
         {
-            int i = 0;
-            for (i = 0; i < Produce.Count; i++)
+            foreach (var stall in sharedFarmersMarketVM.Items)
             {
-
-                var ProduceFromStallNum = Produce[i];
-
-                int appleAmount = ProduceFromStallNum.AppleAmount;
-                int bananaAmount = ProduceFromStallNum.BananaAmount;
-                int carrotAmount = ProduceFromStallNum.CarrotAmount;
-                int orangeAmount = ProduceFromStallNum.OrangeAmount;
-                int mangoAmount = ProduceFromStallNum.MangoAmount;
+                stall.Confirm(sharedFarmersMarketVM);
+            }
+            foreach (var produceItem in Produce)
+            {
+                sharedFarmersMarketVM.MarketList.Add(new Produce
+                {
+                    Name = produceItem.Name,
+                    AppleAmount = produceItem.AppleAmount,
+                    BananaAmount = produceItem.BananaAmount,
+                    CarrotAmount = produceItem.CarrotAmount,
+                    OrangeAmount = produceItem.OrangeAmount,
+                    MangoAmount = produceItem.MangoAmount
+                });
             }
 
-            
+            sharedFarmersMarketVM.PrintMarketList();
         }
 
         private string farmerID;
@@ -88,5 +93,8 @@ namespace FarmersMarketTest.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        // Shared FarmersMarketVM instance for demonstration purposes
+        private static FarmersMarketVM SharedFarmersMarketVM { get; } = new FarmersMarketVM();
     }
 }
