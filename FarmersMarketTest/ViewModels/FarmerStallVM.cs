@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using static FarmersMarketTest.ViewModels.FarmersMarketVM;
 
 namespace FarmersMarketTest.ViewModels
 {
@@ -17,20 +18,6 @@ namespace FarmersMarketTest.ViewModels
         }
 
         public ICommand ConfirmCommand { get; }
-
-        private int appleAmount;
-        public int AppleAmount
-        {
-            get => Produce?.FirstOrDefault()?.AppleAmount ?? 0;
-            set
-            {
-                if (Produce != null && Produce.Any())
-                {
-                    Produce[0].AppleAmount = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
 
         private void Confirm(FarmersMarketVM sharedFarmersMarketVM)
         {
@@ -94,7 +81,7 @@ namespace FarmersMarketTest.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        // Shared FarmersMarketVM instance for demonstration purposes
+        
         private static FarmersMarketVM SharedFarmersMarketVM { get; } = new FarmersMarketVM();
     }
 }

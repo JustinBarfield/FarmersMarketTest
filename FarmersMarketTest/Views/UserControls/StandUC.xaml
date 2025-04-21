@@ -20,7 +20,7 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" Margin="5">
-                        <!-- Display Produce Name -->
+                       
                         <TextBlock Text="Apple" VerticalAlignment="Center" Margin="0,0,10,0" />
                         <xctk:IntegerUpDown Name="AppleUpDown" Value="{Binding AppleAmount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         
@@ -36,18 +36,14 @@
                         <TextBlock Text="Mango" VerticalAlignment="Center" Margin="0,0,10,0" />
                         <xctk:IntegerUpDown Name="MangoUpDown" Value="{Binding MangoAmount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                       
-                        
-
-                        
                     </StackPanel>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
+        
         <Button Grid.Row="2" HorizontalAlignment="Right" 
             Command="{Binding ConfirmCommand}">
             Confirm
-            
         </Button>
 
     </Grid>
